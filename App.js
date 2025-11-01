@@ -13,13 +13,15 @@ import TeamsScreen from './screens/TeamsScreen';
 import TelemetryScreen from './screens/TelemetryScreen';
 import HistoryScreen from './screens/HistoryScreen';
 
-// 🎨 Custom Theme
+// 🎨 F1 Theme Colors
 const COLORS = {
-  primary: '#e10600', // F1 red
-  background: '#0b0b0b', // Dark background
-  card: '#1a1a1a', // Darker card
-  text: '#ffffff', // White text
-  muted: '#888888', // Muted grey
+  primary: '#E10600',      // F1 Red
+  background: '#000000',   // Pure Black
+  card: '#0A0A0A',         // Dark Card
+  text: '#FFFFFF',
+  textMuted: '#8E8E93',
+  accent: '#00D9FF',       // Cyan accent
+  gold: '#FFD700',         // Gold for highlights
 };
 
 const AppTheme = {
@@ -45,36 +47,41 @@ export default function App() {
             headerShown: true,
             headerStyle: {
               backgroundColor: COLORS.card,
-              height: 90,
-              borderBottomWidth: 0,
-              shadowColor: 'transparent',
+              height: 110,
+              elevation: 0,
+              shadowOpacity: 0,
+              borderBottomWidth: 2,
+              borderBottomColor: COLORS.primary,
             },
             headerTitleStyle: {
-              fontSize: 22,
-              fontWeight: '700',
+              fontSize: 24,
+              fontWeight: '900',
               color: COLORS.primary,
               textTransform: 'uppercase',
-              letterSpacing: 1,
+              letterSpacing: 2,
+              textShadowColor: 'rgba(225, 6, 0, 0.3)',
+              textShadowOffset: { width: 0, height: 2 },
+              textShadowRadius: 8,
             },
             headerTitleAlign: 'center',
 
-            tabBarIcon: ({ color, size }) => {
+            tabBarIcon: ({ color, size, focused }) => {
               let iconName;
               switch (route.name) {
                 case 'Home':
-                  iconName = 'home-outline';
+                  iconName = focused ? 'home' : 'home-outline';
                   break;
                 case 'Drivers':
-                  iconName = 'people-outline';
+                  iconName = focused ? 'people' : 'people-outline';
                   break;
                 case 'Teams':
-                  iconName = 'car-outline';
+                  iconName = focused ? 'car-sport' : 'car-sport-outline';
                   break;
                 case 'Telemetry':
-                  iconName = 'speedometer-outline';
+                  iconName = focused ? 'speedometer' : 'speedometer-outline';
                   break;
                 case 'History':
-                  iconName = 'time-outline';
+                  iconName = focused ? 'trophy' : 'trophy-outline';
                   break;
                 default:
                   iconName = 'ellipse-outline';
@@ -83,22 +90,24 @@ export default function App() {
             },
 
             tabBarActiveTintColor: COLORS.primary,
-            tabBarInactiveTintColor: COLORS.muted,
+            tabBarInactiveTintColor: COLORS.textMuted,
             tabBarStyle: {
               backgroundColor: COLORS.card,
-              borderTopWidth: 0,
-              height: 100,
-              paddingBottom: 18,
-              paddingTop: 8,
-              shadowColor: '#000',
-              shadowOpacity: 0.2,
-              shadowRadius: 10,
-              elevation: 8,
+              borderTopWidth: 2,
+              borderTopColor: COLORS.primary,
+              height: 115,
+              paddingBottom: 24,
+              paddingTop: 12,
+              shadowColor: COLORS.primary,
+              shadowOpacity: 0.3,
+              shadowRadius: 20,
+              elevation: 20,
             },
             tabBarLabelStyle: {
-              fontSize: 12,
-              fontWeight: '600',
-              letterSpacing: 0.5,
+              fontSize: 11,
+              fontWeight: '700',
+              letterSpacing: 0.8,
+              textTransform: 'uppercase',
             },
           })}
         >

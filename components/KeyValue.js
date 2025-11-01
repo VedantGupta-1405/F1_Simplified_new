@@ -1,30 +1,38 @@
 // components/KeyValue.js
 import { View, Text, StyleSheet } from 'react-native';
-import { COLORS, FONTS, SIZES, components } from '../theme/theme';
+import { COLORS, SIZES, FONTS } from '../theme/theme';
 
 export default function KeyValue({ k, v }) {
   return (
-    <View style={styles.kvRow}>
-      <Text style={styles.kvKey}>{k}:</Text>
-      <Text style={styles.kvVal}>{v}</Text>
+    <View style={styles.container}>
+      <Text style={styles.key}>{k}</Text>
+      <Text style={styles.value}>{v}</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  kvRow: {
+  container: {
     flexDirection: 'row',
-    marginVertical: 2,
+    justifyContent: 'space-between',
     alignItems: 'center',
+    paddingVertical: SIZES.s,
+    borderBottomWidth: 1,
+    borderBottomColor: COLORS.divider,
   },
-  kvKey: {
-    width: 110,
+  key: {
+    ...FONTS.bodySmall,
+    color: COLORS.textMuted,
     fontWeight: '600',
-    fontSize: 13,
-  },
-  kvVal: {
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
     flex: 1,
-    fontSize: 13,
-    color: '#333',
+  },
+  value: {
+    ...FONTS.body,
+    color: COLORS.text,
+    fontWeight: '700',
+    textAlign: 'right',
+    flex: 1,
   },
 });

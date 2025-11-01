@@ -1,16 +1,33 @@
 // components/SectionTitle.js
-import { Text, StyleSheet } from 'react-native';
-import { COLORS, FONTS, SIZES, components } from '../theme/theme';
+import { View, Text, StyleSheet } from 'react-native';
+import { COLORS, SIZES, FONTS } from '../theme/theme';
 
 export default function SectionTitle({ children }) {
-  return <Text style={styles.sectionTitle}>{children}</Text>;
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>{children}</Text>
+      <View style={styles.accent} />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-  sectionTitle: {
-    fontSize: 20,
-    fontWeight: '700',
-    margin: 12,
-    marginLeft: 18,
+  container: {
+    marginBottom: SIZES.m,
+    paddingBottom: SIZES.s,
+  },
+  title: {
+    ...FONTS.h3,
+    color: COLORS.text,
+    fontWeight: '900',
+    letterSpacing: 1.5,
+    textTransform: 'uppercase',
+  },
+  accent: {
+    width: 40,
+    height: 3,
+    backgroundColor: COLORS.primary,
+    marginTop: SIZES.s,
+    borderRadius: 2,
   },
 });
