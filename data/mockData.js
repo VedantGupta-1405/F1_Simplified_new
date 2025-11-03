@@ -6,7 +6,7 @@ export const MOCK = {
   currentSeason: {
     year: 2024,
     totalRaces: 24,
-    completedRaces: 22,
+    completedRaces: 23,
     remainingRaces: 2,
     currentRound: 23,
   },
